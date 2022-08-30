@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Выберите бренд</div>
+    <select id="brands" onchange="selectBrand(this)" class="select">
+        <option value="none">Не выбрано</option>
+        <option value="bmw">BMW</option>
+        <option value="nissan">Nissan</option>
+        <option value="mazda">Mazda</option>
+    </select>
+    <button id="chooseBrand">Выбрать бренд машины</button>
+    <select id="models" style="display: none;" class="select"></select>
+    <button id="chooseModel">Выбрать модель машины</button>
+
+    <select id="yearOfIssue" class="select">
+        <option value="none">Не выбрано</option>
+        <option value="2000">2000</option>
+        <option value="2005">2005</option>
+        <option value="2010">2010</option>
+    </select>
+    <button id="yearOfIssue">Выбрать год выпуска</button>
+
+    <select id="mileage" class="select">
+        <option value="none">Не выбрано</option>
+        <option value="10000">10000</option>
+        <option value="50000">50000</option>
+        <option value="100000">100000</option>
+    </select>
+    <button id="mileage">Выбрать год выпуска</button>
+
+    <script>
+        const bmwModels = ['BMW X1', 'BMW X2', 'BMW X3'];
+        const nissanModels = ['Qashkai', 'X-Trail', 'Pathfinder'];
+        const mazdaModels = ['Mazda 6', 'Mazda 3', 'Mazda 2'];
+
+        function selectBrand(sender) {
+            if (sender.options[sender.selectedIndex].value == 'none')
+                document.getElementById('models').style.display =
+                'none';
+            else
+                document.getElementById('models').style.display = 'block';
+
+            let optionsString = '';
+            if (sender.options[sender.selectedIndex].value == 'bmw') {
+                for (let model of bmwModels)
+                    optionsString += `<option>${
+                        model}</option>`;
+            }
+            if (sender.options[sender.selectedIndex].value == 'nissan') {
+                for (let model of nissanModels)
+                    optionsString += `<option>${
+                        model}</option>`;
+            }
+            if (sender.options[sender.selectedIndex].value == 'mazda') {
+                for (let model of mazdaModels)
+                    optionsString += `<option>${model}</option>`;
+
+            }
+            document.getElementById('models').innerHTML = optionsString;
+        }
+
+        //присвоить марку машины в переменную
+        const chooseBrand = document.getElementById('chooseBrand');
+        chooseBrand.addEventListener('click', () => {
+            let brand = document.querySelector('#brands').value;
+            console.log(brand);
+        })
+
+        //присвоить модель в переменную
+        const chooseModel = document.getElementById('chooseModel');
+        chooseModel.addEventListener('click', () => {
+            let modelCar = document.querySelector('#models').value;
+            console.log(modelCar);
+        })
+
+        //присвоить год выпуска в переменную
+        const yearOfIssue = document.getElementById('yearOfIssue');
+        yearOfIssue.addEventListener('click', () => {
+            let carYearOfIssue = document.querySelector('#yearOfIssue').value;
+            console.log(carYearOfIssue);
+        })
+
+        //присвоить пробег в переменнуд
+        const mileage = document.getElementById('mileage');
+        mileage.addEventListener('click', () => {
+            let carMileage = document.querySelector('#mileage').value;
+            console.log(carMileage);
+        })
+
+
+        // let carPrice = document.getElementsByClassName('select');
+        // const carArray = [];
+        // for (let i = 0; i < carPrice.length; i++) {
+        //     carArray.push(carPrice[i]);
+        //     console.log(carPrice);
+        // }
+    </script>
+</body>
+
+</html>
